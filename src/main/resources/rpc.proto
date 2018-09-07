@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+option java_package = "in.xnnyygn.xratelimiter.rpc";
+option java_outer_classname = "Protos";
+
+message MemberEndpoint {
+    string host = 1;
+    int32 port = 2;
+}
+
+message Member {
+    MemberEndpoint endpoint = 1;
+    int64 time_added = 2;
+    int64 time_removed = 3;
+}
+
+message MemberJoinRpc {
+    MemberEndpoint endpoint = 1;
+    int64 time_joined = 2;
+}
+
+message MemberJoinResponse {
+    repeated Member members = 1;
+}
+
+message MemberLeavedRpc {
+    MemberEndpoint endpoint = 1;
+    int64 time_leaved = 2;
+}
+
+message MemberJoinedUpdate {
+    int64 id = 1;
+    MemberEndpoint endpoint = 2;
+    int64 time_joined = 3;
+}
+
+message MemberLeavedUpdate {
+    int64 id = 1;
+    MemberEndpoint endpoint = 2;
+    int64 time_leaved = 3;
+}
+
+message MemberNotification {
+    MemberEndpoint endpoint = 1;
+    bool suspected = 2;
+    int64 timestamp = 3;
+    MemberEndpoint by = 4;
+}
+
+message MemberUpdatesRpc {
+    int64 exchange_at = 1;
+    repeated MemberJoinedUpdate member_joined_updates = 2;
+    repeated MemberLeavedUpdate member_leaved_update = 3;
+    repeated MemberNotification notifications = 4;
+    bytes member_digest = 5;
+}
+
+message MemberUpdatesAgreedResponse {
+    int64 exchange_at = 1;
+    map<int64, bool> updated_map = 2;
+}
+
+message MemberUpdatesResponse {
+    int64 exchange_at = 1;
+    map<int64, bool> updated_map = 2;
+    repeated MemberJoinedUpdate member_joined_updates = 3;
+    repeated MemberJoinedUpdate member_leaved_updates = 4;
+    bytes member_digest = 5;
+    int32 hop_count = 6;
+}
+
+message MembersMergeResponse {
+    int64 exchange_at = 1;
+    map<int64, bool> updated_map = 2;
+    repeated Member members = 3;
+    bytes members_digest = 4;
+    int32 hop_count = 5;
+}
+
+message MembersMergedResponse {
+    int64 exchange_at = 1;
+}
+
+message PingRpc {
+    int64 ping_at = 1;
+}
+
+message PingResponse {
+    int64 ping_at = 1;
+}
+
+message PingRequestRpc {
+    int64 ping_at = 1;
+    MemberEndpoint endpoint = 2;
+}
+
+message ProxyPingRpc {
+    int64 ping_at = 1;
+    MemberEndpoint source_endpoint = 2;
+}
+
+message ProxyPingResponse {
+    int64 ping_at = 1;
+    MemberEndpoint source_endpoint = 2;
+}
+
+message ProxyPingDoneResponse {
+    int64 ping_at = 1;
+    MemberEndpoint endpoint = 2;
+}
