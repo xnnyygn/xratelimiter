@@ -7,7 +7,7 @@ import in.xnnyygn.xratelimiter.support.MessageDispatcher;
 import java.util.ArrayList;
 import java.util.List;
 
-class MemberListContext {
+public class MemberListContext {
 
     private final UpdateList updateList = new UpdateList(5);
     private final NotificationList notificationList = new NotificationList(5);

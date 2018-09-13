@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
-class MemberListExchanger {
+public class MemberListExchanger {
 
     private static final int MAX_UPDATES = 1;
     private static final int MAX_MEMBER_UPDATES_RESPONSE_TURN = 10;
