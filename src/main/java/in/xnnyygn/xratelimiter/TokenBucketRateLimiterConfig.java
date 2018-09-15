@@ -46,4 +46,14 @@ public class TokenBucketRateLimiterConfig {
         );
     }
 
+    @Override
+    public String toString() {
+        return "TokenBucketRateLimiterConfig{" +
+                "capacity=" + capacity +
+                ", initialTokens=" + initialTokens +
+                ", refillAmount=" + refillAmount +
+                ", refillTime=" + refillTime +
+                '}';
+    }
+
 }

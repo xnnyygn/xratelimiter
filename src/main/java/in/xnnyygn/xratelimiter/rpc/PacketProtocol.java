@@ -2,6 +2,10 @@ package in.xnnyygn.xratelimiter.rpc;
 
 import com.google.common.collect.Iterables;
 import com.google.protobuf.ByteString;
+import in.xnnyygn.xratelimiter.LimiterWeightsCollectingRpc;
+import in.xnnyygn.xratelimiter.MultiLimiterConfigSyncResponse;
+import in.xnnyygn.xratelimiter.MultiLimiterConfigSyncRpc;
+import in.xnnyygn.xratelimiter.TokenBucketRateLimiterConfig;
 import in.xnnyygn.xratelimiter.gossip.Member;
 import in.xnnyygn.xratelimiter.gossip.MemberEndpoint;
 import in.xnnyygn.xratelimiter.gossip.MemberNotification;
@@ -35,6 +39,9 @@ class PacketProtocol {
     private static final int MSG_TYPE_PROXY_PING_RPC = 23;
     private static final int MSG_TYPE_PROXY_PING_RESPONSE = 24;
     private static final int MSG_TYPE_PROXY_PING_DONE_RESPONSE = 25;
+    private static final int MSG_TYPE_DRL_LIMITER_WEIGHTS_COLLECTING_RPC = 30;
+    private static final int MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RPC = 31;
+    private static final int MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RESPONSE = 32;
 
     DatagramPacket toPacket(MemberEndpoint sender, AbstractMessage message, MemberEndpoint recipient) {
         byte[] bytes;
@@ -196,6 +203,42 @@ class PacketProtocol {
                     .setPingAt(proxyPingDoneResponse.getPingAt())
                     .setEndpoint(toProtoMemberEndpoint(proxyPingDoneResponse.getEndpoint()))
                     .build().writeTo(dataOutput);
+        } else if (message instanceof LimiterWeightsCollectingRpc) {
+            dataOutput.writeInt(MSG_TYPE_DRL_LIMITER_WEIGHTS_COLLECTING_RPC);
+            LimiterWeightsCollectingRpc limiterWeightsCollectingRpc = (LimiterWeightsCollectingRpc) message;
+            Protos.LimiterWeightsCollectingRpc.newBuilder()
+                    .setRound(limiterWeightsCollectingRpc.getRound())
+                    .addAllIdealWeights(limiterWeightsCollectingRpc.getIdealWeightMap().entrySet().stream().map(e ->
+                            Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.newBuilder()
+                                    .setEndpoint(toProtoMemberEndpoint(e.getKey()))
+                                    .setWeight(e.getValue())
+                                    .build()
+                    ).collect(Collectors.toList()))
+                    .addAllRemainingEndpoints(limiterWeightsCollectingRpc.getRemainingEndpoints().stream().map(
+                            this::toProtoMemberEndpoint
+                    ).collect(Collectors.toList()))
+                    .build().writeTo(dataOutput);
+        } else if (message instanceof MultiLimiterConfigSyncRpc) {
+            dataOutput.writeInt(MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RPC);
+            MultiLimiterConfigSyncRpc multiLimiterConfigSyncRpc = (MultiLimiterConfigSyncRpc) message;
+            Protos.MultiLimiterConfigSyncRpc.newBuilder()
+                    .setRound(multiLimiterConfigSyncRpc.getRound())
+                    .build().writeTo(dataOutput);
+        } else if (message instanceof MultiLimiterConfigSyncResponse) {
+            dataOutput.writeInt(MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RESPONSE);
+            MultiLimiterConfigSyncResponse multiLimiterConfigSyncResponse = (MultiLimiterConfigSyncResponse) message;
+            Protos.MultiLimiterConfigSyncResponse.newBuilder()
+                    .setRound(multiLimiterConfigSyncResponse.getRound())
+                    .addAllConfigs(multiLimiterConfigSyncResponse.getConfigMap().entrySet().stream().map(e -> {
+                        TokenBucketRateLimiterConfig config = e.getValue();
+                        return Protos.MultiLimiterConfigSyncResponse.ConfigEntry.newBuilder()
+                                .setEndpoint(toProtoMemberEndpoint(e.getKey()))
+                                .setCapacity(config.getCapacity())
+                                .setRefillAmount(config.getRefillAmount())
+                                .setRefillTime(config.getRefillTime())
+                                .build();
+                    }).collect(Collectors.toList()))
+                    .build().writeTo(dataOutput);
         } else {
             throw new ProtocolException("unsupported message " + message.getClass());
         }
@@ -346,8 +389,32 @@ class PacketProtocol {
                     Protos.ProxyPingResponse protoProxyPingResponse = Protos.ProxyPingResponse.parseFrom(input);
                     return new ProxyPingResponse(protoProxyPingResponse.getPingAt(), toMemberEndpoint(protoProxyPingResponse.getSourceEndpoint()));
                 case MSG_TYPE_PROXY_PING_DONE_RESPONSE:
-                    Protos.ProxyPingDoneResponse proxyPingDoneResponse = Protos.ProxyPingDoneResponse.parseFrom(input);
-                    return new ProxyPingDoneResponse(proxyPingDoneResponse.getPingAt(), toMemberEndpoint(proxyPingDoneResponse.getEndpoint()));
+                    Protos.ProxyPingDoneResponse protoProxyPingDoneResponse = Protos.ProxyPingDoneResponse.parseFrom(input);
+                    return new ProxyPingDoneResponse(protoProxyPingDoneResponse.getPingAt(), toMemberEndpoint(protoProxyPingDoneResponse.getEndpoint()));
+                case MSG_TYPE_DRL_LIMITER_WEIGHTS_COLLECTING_RPC:
+                    Protos.LimiterWeightsCollectingRpc protoLimiterWeightsCollectingRpc = Protos.LimiterWeightsCollectingRpc.parseFrom(input);
+                    return new LimiterWeightsCollectingRpc(
+                            protoLimiterWeightsCollectingRpc.getRound(),
+                            protoLimiterWeightsCollectingRpc.getIdealWeightsList().stream().collect(Collectors.toMap(
+                                    e -> toMemberEndpoint(e.getEndpoint()),
+                                    e -> e.getWeight()
+                            )),
+                            protoLimiterWeightsCollectingRpc.getRemainingEndpointsList().stream()
+                                    .map(this::toMemberEndpoint)
+                                    .collect(Collectors.toSet())
+                    );
+                case MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RPC:
+                    Protos.MultiLimiterConfigSyncRpc protoMultiLimiterConfigSyncRpc = Protos.MultiLimiterConfigSyncRpc.parseFrom(input);
+                    return new MultiLimiterConfigSyncRpc(protoMultiLimiterConfigSyncRpc.getRound());
+                case MSG_TYPE_DRL_MULTI_LIMITER_CONFIG_SYNC_RESPONSE:
+                    Protos.MultiLimiterConfigSyncResponse protoMultiLimiterConfigSyncResponse = Protos.MultiLimiterConfigSyncResponse.parseFrom(input);
+                    return new MultiLimiterConfigSyncResponse(
+                            protoMultiLimiterConfigSyncResponse.getRound(),
+                            protoMultiLimiterConfigSyncResponse.getConfigsList().stream().collect(Collectors.toMap(
+                                    e -> toMemberEndpoint(e.getEndpoint()),
+                                    e -> new TokenBucketRateLimiterConfig(e.getCapacity(), e.getRefillAmount(), e.getRefillTime(), 0)
+                            ))
+                    );
                 default:
                     throw new ParserException("unexpected message type " + messageType);
             }

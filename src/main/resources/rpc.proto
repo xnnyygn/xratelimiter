@@ -108,3 +108,30 @@ message ProxyPingDoneResponse {
     int64 ping_at = 1;
     MemberEndpoint endpoint = 2;
 }
+
+message LimiterWeightsCollectingRpc {
+    message IdealWeightEntry {
+        MemberEndpoint endpoint = 1;
+        double weight = 2;
+    }
+
+    int32 round = 1;
+    repeated IdealWeightEntry idealWeights = 2;
+    repeated MemberEndpoint remaining_endpoints = 3;
+}
+
+message MultiLimiterConfigSyncRpc {
+    int32 round = 1;
+}
+
+message MultiLimiterConfigSyncResponse {
+    message ConfigEntry {
+        MemberEndpoint endpoint = 1;
+        int32 capacity = 2;
+        int32 refill_amount = 3;
+        int64 refill_time = 4;
+    }
+
+    int32 round = 1;
+    repeated ConfigEntry configs = 2;
+}

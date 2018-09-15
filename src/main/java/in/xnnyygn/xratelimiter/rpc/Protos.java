@@ -15375,6 +15375,4015 @@ public final class Protos {
 
   }
 
+  public interface LimiterWeightsCollectingRpcOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LimiterWeightsCollectingRpc)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    int getRound();
+
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> 
+        getIdealWeightsList();
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getIdealWeights(int index);
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    int getIdealWeightsCount();
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder> 
+        getIdealWeightsOrBuilderList();
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder getIdealWeightsOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> 
+        getRemainingEndpointsList();
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getRemainingEndpoints(int index);
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    int getRemainingEndpointsCount();
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+        getRemainingEndpointsOrBuilderList();
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getRemainingEndpointsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code LimiterWeightsCollectingRpc}
+   */
+  public  static final class LimiterWeightsCollectingRpc extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:LimiterWeightsCollectingRpc)
+      LimiterWeightsCollectingRpcOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use LimiterWeightsCollectingRpc.newBuilder() to construct.
+    private LimiterWeightsCollectingRpc(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private LimiterWeightsCollectingRpc() {
+      round_ = 0;
+      idealWeights_ = java.util.Collections.emptyList();
+      remainingEndpoints_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LimiterWeightsCollectingRpc(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              round_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                idealWeights_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              idealWeights_.add(
+                  input.readMessage(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                remainingEndpoints_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              remainingEndpoints_.add(
+                  input.readMessage(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          idealWeights_ = java.util.Collections.unmodifiableList(idealWeights_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          remainingEndpoints_ = java.util.Collections.unmodifiableList(remainingEndpoints_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.class, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.Builder.class);
+    }
+
+    public interface IdealWeightEntryOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:LimiterWeightsCollectingRpc.IdealWeightEntry)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      boolean hasEndpoint();
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint();
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder();
+
+      /**
+       * <code>double weight = 2;</code>
+       */
+      double getWeight();
+    }
+    /**
+     * Protobuf type {@code LimiterWeightsCollectingRpc.IdealWeightEntry}
+     */
+    public  static final class IdealWeightEntry extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:LimiterWeightsCollectingRpc.IdealWeightEntry)
+        IdealWeightEntryOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use IdealWeightEntry.newBuilder() to construct.
+      private IdealWeightEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private IdealWeightEntry() {
+        weight_ = 0D;
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private IdealWeightEntry(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder subBuilder = null;
+                if (endpoint_ != null) {
+                  subBuilder = endpoint_.toBuilder();
+                }
+                endpoint_ = input.readMessage(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(endpoint_);
+                  endpoint_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
+              case 17: {
+
+                weight_ = input.readDouble();
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.class, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder.class);
+      }
+
+      public static final int ENDPOINT_FIELD_NUMBER = 1;
+      private in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint endpoint_;
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public boolean hasEndpoint() {
+        return endpoint_ != null;
+      }
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint() {
+        return endpoint_ == null ? in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+      }
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder() {
+        return getEndpoint();
+      }
+
+      public static final int WEIGHT_FIELD_NUMBER = 2;
+      private double weight_;
+      /**
+       * <code>double weight = 2;</code>
+       */
+      public double getWeight() {
+        return weight_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (endpoint_ != null) {
+          output.writeMessage(1, getEndpoint());
+        }
+        if (weight_ != 0D) {
+          output.writeDouble(2, weight_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (endpoint_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, getEndpoint());
+        }
+        if (weight_ != 0D) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeDoubleSize(2, weight_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry)) {
+          return super.equals(obj);
+        }
+        in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry other = (in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry) obj;
+
+        boolean result = true;
+        result = result && (hasEndpoint() == other.hasEndpoint());
+        if (hasEndpoint()) {
+          result = result && getEndpoint()
+              .equals(other.getEndpoint());
+        }
+        result = result && (
+            java.lang.Double.doubleToLongBits(getWeight())
+            == java.lang.Double.doubleToLongBits(
+                other.getWeight()));
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasEndpoint()) {
+          hash = (37 * hash) + ENDPOINT_FIELD_NUMBER;
+          hash = (53 * hash) + getEndpoint().hashCode();
+        }
+        hash = (37 * hash) + WEIGHT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getWeight()));
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code LimiterWeightsCollectingRpc.IdealWeightEntry}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:LimiterWeightsCollectingRpc.IdealWeightEntry)
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.class, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder.class);
+        }
+
+        // Construct using in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          if (endpointBuilder_ == null) {
+            endpoint_ = null;
+          } else {
+            endpoint_ = null;
+            endpointBuilder_ = null;
+          }
+          weight_ = 0D;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor;
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getDefaultInstanceForType() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry build() {
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry buildPartial() {
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry result = new in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry(this);
+          if (endpointBuilder_ == null) {
+            result.endpoint_ = endpoint_;
+          } else {
+            result.endpoint_ = endpointBuilder_.build();
+          }
+          result.weight_ = weight_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry) {
+            return mergeFrom((in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry other) {
+          if (other == in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.getDefaultInstance()) return this;
+          if (other.hasEndpoint()) {
+            mergeEndpoint(other.getEndpoint());
+          }
+          if (other.getWeight() != 0D) {
+            setWeight(other.getWeight());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint endpoint_ = null;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> endpointBuilder_;
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public boolean hasEndpoint() {
+          return endpointBuilder_ != null || endpoint_ != null;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint() {
+          if (endpointBuilder_ == null) {
+            return endpoint_ == null ? in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+          } else {
+            return endpointBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder setEndpoint(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+          if (endpointBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            endpoint_ = value;
+            onChanged();
+          } else {
+            endpointBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder setEndpoint(
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder builderForValue) {
+          if (endpointBuilder_ == null) {
+            endpoint_ = builderForValue.build();
+            onChanged();
+          } else {
+            endpointBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder mergeEndpoint(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+          if (endpointBuilder_ == null) {
+            if (endpoint_ != null) {
+              endpoint_ =
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.newBuilder(endpoint_).mergeFrom(value).buildPartial();
+            } else {
+              endpoint_ = value;
+            }
+            onChanged();
+          } else {
+            endpointBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder clearEndpoint() {
+          if (endpointBuilder_ == null) {
+            endpoint_ = null;
+            onChanged();
+          } else {
+            endpoint_ = null;
+            endpointBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder getEndpointBuilder() {
+          
+          onChanged();
+          return getEndpointFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder() {
+          if (endpointBuilder_ != null) {
+            return endpointBuilder_.getMessageOrBuilder();
+          } else {
+            return endpoint_ == null ?
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+          }
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+            getEndpointFieldBuilder() {
+          if (endpointBuilder_ == null) {
+            endpointBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder>(
+                    getEndpoint(),
+                    getParentForChildren(),
+                    isClean());
+            endpoint_ = null;
+          }
+          return endpointBuilder_;
+        }
+
+        private double weight_ ;
+        /**
+         * <code>double weight = 2;</code>
+         */
+        public double getWeight() {
+          return weight_;
+        }
+        /**
+         * <code>double weight = 2;</code>
+         */
+        public Builder setWeight(double value) {
+          
+          weight_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>double weight = 2;</code>
+         */
+        public Builder clearWeight() {
+          
+          weight_ = 0D;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:LimiterWeightsCollectingRpc.IdealWeightEntry)
+      }
+
+      // @@protoc_insertion_point(class_scope:LimiterWeightsCollectingRpc.IdealWeightEntry)
+      private static final in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry();
+      }
+
+      public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<IdealWeightEntry>
+          PARSER = new com.google.protobuf.AbstractParser<IdealWeightEntry>() {
+        @java.lang.Override
+        public IdealWeightEntry parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new IdealWeightEntry(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<IdealWeightEntry> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<IdealWeightEntry> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private int bitField0_;
+    public static final int ROUND_FIELD_NUMBER = 1;
+    private int round_;
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    public int getRound() {
+      return round_;
+    }
+
+    public static final int IDEALWEIGHTS_FIELD_NUMBER = 2;
+    private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> idealWeights_;
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> getIdealWeightsList() {
+      return idealWeights_;
+    }
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder> 
+        getIdealWeightsOrBuilderList() {
+      return idealWeights_;
+    }
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    public int getIdealWeightsCount() {
+      return idealWeights_.size();
+    }
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getIdealWeights(int index) {
+      return idealWeights_.get(index);
+    }
+    /**
+     * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder getIdealWeightsOrBuilder(
+        int index) {
+      return idealWeights_.get(index);
+    }
+
+    public static final int REMAINING_ENDPOINTS_FIELD_NUMBER = 3;
+    private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> remainingEndpoints_;
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> getRemainingEndpointsList() {
+      return remainingEndpoints_;
+    }
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+        getRemainingEndpointsOrBuilderList() {
+      return remainingEndpoints_;
+    }
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    public int getRemainingEndpointsCount() {
+      return remainingEndpoints_.size();
+    }
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getRemainingEndpoints(int index) {
+      return remainingEndpoints_.get(index);
+    }
+    /**
+     * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getRemainingEndpointsOrBuilder(
+        int index) {
+      return remainingEndpoints_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (round_ != 0) {
+        output.writeInt32(1, round_);
+      }
+      for (int i = 0; i < idealWeights_.size(); i++) {
+        output.writeMessage(2, idealWeights_.get(i));
+      }
+      for (int i = 0; i < remainingEndpoints_.size(); i++) {
+        output.writeMessage(3, remainingEndpoints_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (round_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, round_);
+      }
+      for (int i = 0; i < idealWeights_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, idealWeights_.get(i));
+      }
+      for (int i = 0; i < remainingEndpoints_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, remainingEndpoints_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc)) {
+        return super.equals(obj);
+      }
+      in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc other = (in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc) obj;
+
+      boolean result = true;
+      result = result && (getRound()
+          == other.getRound());
+      result = result && getIdealWeightsList()
+          .equals(other.getIdealWeightsList());
+      result = result && getRemainingEndpointsList()
+          .equals(other.getRemainingEndpointsList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROUND_FIELD_NUMBER;
+      hash = (53 * hash) + getRound();
+      if (getIdealWeightsCount() > 0) {
+        hash = (37 * hash) + IDEALWEIGHTS_FIELD_NUMBER;
+        hash = (53 * hash) + getIdealWeightsList().hashCode();
+      }
+      if (getRemainingEndpointsCount() > 0) {
+        hash = (37 * hash) + REMAINING_ENDPOINTS_FIELD_NUMBER;
+        hash = (53 * hash) + getRemainingEndpointsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code LimiterWeightsCollectingRpc}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LimiterWeightsCollectingRpc)
+        in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpcOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.class, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.Builder.class);
+      }
+
+      // Construct using in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getIdealWeightsFieldBuilder();
+          getRemainingEndpointsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        round_ = 0;
+
+        if (idealWeightsBuilder_ == null) {
+          idealWeights_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          idealWeightsBuilder_.clear();
+        }
+        if (remainingEndpointsBuilder_ == null) {
+          remainingEndpoints_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          remainingEndpointsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_LimiterWeightsCollectingRpc_descriptor;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc getDefaultInstanceForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc build() {
+        in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc buildPartial() {
+        in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc result = new in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.round_ = round_;
+        if (idealWeightsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            idealWeights_ = java.util.Collections.unmodifiableList(idealWeights_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.idealWeights_ = idealWeights_;
+        } else {
+          result.idealWeights_ = idealWeightsBuilder_.build();
+        }
+        if (remainingEndpointsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            remainingEndpoints_ = java.util.Collections.unmodifiableList(remainingEndpoints_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.remainingEndpoints_ = remainingEndpoints_;
+        } else {
+          result.remainingEndpoints_ = remainingEndpointsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc) {
+          return mergeFrom((in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc other) {
+        if (other == in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.getDefaultInstance()) return this;
+        if (other.getRound() != 0) {
+          setRound(other.getRound());
+        }
+        if (idealWeightsBuilder_ == null) {
+          if (!other.idealWeights_.isEmpty()) {
+            if (idealWeights_.isEmpty()) {
+              idealWeights_ = other.idealWeights_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureIdealWeightsIsMutable();
+              idealWeights_.addAll(other.idealWeights_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.idealWeights_.isEmpty()) {
+            if (idealWeightsBuilder_.isEmpty()) {
+              idealWeightsBuilder_.dispose();
+              idealWeightsBuilder_ = null;
+              idealWeights_ = other.idealWeights_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              idealWeightsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getIdealWeightsFieldBuilder() : null;
+            } else {
+              idealWeightsBuilder_.addAllMessages(other.idealWeights_);
+            }
+          }
+        }
+        if (remainingEndpointsBuilder_ == null) {
+          if (!other.remainingEndpoints_.isEmpty()) {
+            if (remainingEndpoints_.isEmpty()) {
+              remainingEndpoints_ = other.remainingEndpoints_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureRemainingEndpointsIsMutable();
+              remainingEndpoints_.addAll(other.remainingEndpoints_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.remainingEndpoints_.isEmpty()) {
+            if (remainingEndpointsBuilder_.isEmpty()) {
+              remainingEndpointsBuilder_.dispose();
+              remainingEndpointsBuilder_ = null;
+              remainingEndpoints_ = other.remainingEndpoints_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              remainingEndpointsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRemainingEndpointsFieldBuilder() : null;
+            } else {
+              remainingEndpointsBuilder_.addAllMessages(other.remainingEndpoints_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int round_ ;
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public int getRound() {
+        return round_;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder setRound(int value) {
+        
+        round_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder clearRound() {
+        
+        round_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> idealWeights_ =
+        java.util.Collections.emptyList();
+      private void ensureIdealWeightsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          idealWeights_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry>(idealWeights_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder> idealWeightsBuilder_;
+
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> getIdealWeightsList() {
+        if (idealWeightsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(idealWeights_);
+        } else {
+          return idealWeightsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public int getIdealWeightsCount() {
+        if (idealWeightsBuilder_ == null) {
+          return idealWeights_.size();
+        } else {
+          return idealWeightsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry getIdealWeights(int index) {
+        if (idealWeightsBuilder_ == null) {
+          return idealWeights_.get(index);
+        } else {
+          return idealWeightsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder setIdealWeights(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry value) {
+        if (idealWeightsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdealWeightsIsMutable();
+          idealWeights_.set(index, value);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder setIdealWeights(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder builderForValue) {
+        if (idealWeightsBuilder_ == null) {
+          ensureIdealWeightsIsMutable();
+          idealWeights_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          idealWeightsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder addIdealWeights(in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry value) {
+        if (idealWeightsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdealWeightsIsMutable();
+          idealWeights_.add(value);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder addIdealWeights(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry value) {
+        if (idealWeightsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdealWeightsIsMutable();
+          idealWeights_.add(index, value);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder addIdealWeights(
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder builderForValue) {
+        if (idealWeightsBuilder_ == null) {
+          ensureIdealWeightsIsMutable();
+          idealWeights_.add(builderForValue.build());
+          onChanged();
+        } else {
+          idealWeightsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder addIdealWeights(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder builderForValue) {
+        if (idealWeightsBuilder_ == null) {
+          ensureIdealWeightsIsMutable();
+          idealWeights_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          idealWeightsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder addAllIdealWeights(
+          java.lang.Iterable<? extends in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry> values) {
+        if (idealWeightsBuilder_ == null) {
+          ensureIdealWeightsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, idealWeights_);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder clearIdealWeights() {
+        if (idealWeightsBuilder_ == null) {
+          idealWeights_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public Builder removeIdealWeights(int index) {
+        if (idealWeightsBuilder_ == null) {
+          ensureIdealWeightsIsMutable();
+          idealWeights_.remove(index);
+          onChanged();
+        } else {
+          idealWeightsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder getIdealWeightsBuilder(
+          int index) {
+        return getIdealWeightsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder getIdealWeightsOrBuilder(
+          int index) {
+        if (idealWeightsBuilder_ == null) {
+          return idealWeights_.get(index);  } else {
+          return idealWeightsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder> 
+           getIdealWeightsOrBuilderList() {
+        if (idealWeightsBuilder_ != null) {
+          return idealWeightsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(idealWeights_);
+        }
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder addIdealWeightsBuilder() {
+        return getIdealWeightsFieldBuilder().addBuilder(
+            in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder addIdealWeightsBuilder(
+          int index) {
+        return getIdealWeightsFieldBuilder().addBuilder(
+            index, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .LimiterWeightsCollectingRpc.IdealWeightEntry idealWeights = 2;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder> 
+           getIdealWeightsBuilderList() {
+        return getIdealWeightsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder> 
+          getIdealWeightsFieldBuilder() {
+        if (idealWeightsBuilder_ == null) {
+          idealWeightsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc.IdealWeightEntryOrBuilder>(
+                  idealWeights_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          idealWeights_ = null;
+        }
+        return idealWeightsBuilder_;
+      }
+
+      private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> remainingEndpoints_ =
+        java.util.Collections.emptyList();
+      private void ensureRemainingEndpointsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          remainingEndpoints_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint>(remainingEndpoints_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> remainingEndpointsBuilder_;
+
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> getRemainingEndpointsList() {
+        if (remainingEndpointsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(remainingEndpoints_);
+        } else {
+          return remainingEndpointsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public int getRemainingEndpointsCount() {
+        if (remainingEndpointsBuilder_ == null) {
+          return remainingEndpoints_.size();
+        } else {
+          return remainingEndpointsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getRemainingEndpoints(int index) {
+        if (remainingEndpointsBuilder_ == null) {
+          return remainingEndpoints_.get(index);
+        } else {
+          return remainingEndpointsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder setRemainingEndpoints(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+        if (remainingEndpointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.set(index, value);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder setRemainingEndpoints(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder builderForValue) {
+        if (remainingEndpointsBuilder_ == null) {
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder addRemainingEndpoints(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+        if (remainingEndpointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.add(value);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder addRemainingEndpoints(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+        if (remainingEndpointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.add(index, value);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder addRemainingEndpoints(
+          in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder builderForValue) {
+        if (remainingEndpointsBuilder_ == null) {
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.add(builderForValue.build());
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder addRemainingEndpoints(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder builderForValue) {
+        if (remainingEndpointsBuilder_ == null) {
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder addAllRemainingEndpoints(
+          java.lang.Iterable<? extends in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint> values) {
+        if (remainingEndpointsBuilder_ == null) {
+          ensureRemainingEndpointsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, remainingEndpoints_);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder clearRemainingEndpoints() {
+        if (remainingEndpointsBuilder_ == null) {
+          remainingEndpoints_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public Builder removeRemainingEndpoints(int index) {
+        if (remainingEndpointsBuilder_ == null) {
+          ensureRemainingEndpointsIsMutable();
+          remainingEndpoints_.remove(index);
+          onChanged();
+        } else {
+          remainingEndpointsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder getRemainingEndpointsBuilder(
+          int index) {
+        return getRemainingEndpointsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getRemainingEndpointsOrBuilder(
+          int index) {
+        if (remainingEndpointsBuilder_ == null) {
+          return remainingEndpoints_.get(index);  } else {
+          return remainingEndpointsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+           getRemainingEndpointsOrBuilderList() {
+        if (remainingEndpointsBuilder_ != null) {
+          return remainingEndpointsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(remainingEndpoints_);
+        }
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder addRemainingEndpointsBuilder() {
+        return getRemainingEndpointsFieldBuilder().addBuilder(
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder addRemainingEndpointsBuilder(
+          int index) {
+        return getRemainingEndpointsFieldBuilder().addBuilder(
+            index, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MemberEndpoint remaining_endpoints = 3;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder> 
+           getRemainingEndpointsBuilderList() {
+        return getRemainingEndpointsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+          getRemainingEndpointsFieldBuilder() {
+        if (remainingEndpointsBuilder_ == null) {
+          remainingEndpointsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder>(
+                  remainingEndpoints_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          remainingEndpoints_ = null;
+        }
+        return remainingEndpointsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:LimiterWeightsCollectingRpc)
+    }
+
+    // @@protoc_insertion_point(class_scope:LimiterWeightsCollectingRpc)
+    private static final in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc();
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<LimiterWeightsCollectingRpc>
+        PARSER = new com.google.protobuf.AbstractParser<LimiterWeightsCollectingRpc>() {
+      @java.lang.Override
+      public LimiterWeightsCollectingRpc parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LimiterWeightsCollectingRpc(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LimiterWeightsCollectingRpc> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LimiterWeightsCollectingRpc> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public in.xnnyygn.xratelimiter.rpc.Protos.LimiterWeightsCollectingRpc getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MultiLimiterConfigSyncRpcOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MultiLimiterConfigSyncRpc)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    int getRound();
+  }
+  /**
+   * Protobuf type {@code MultiLimiterConfigSyncRpc}
+   */
+  public  static final class MultiLimiterConfigSyncRpc extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MultiLimiterConfigSyncRpc)
+      MultiLimiterConfigSyncRpcOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MultiLimiterConfigSyncRpc.newBuilder() to construct.
+    private MultiLimiterConfigSyncRpc(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MultiLimiterConfigSyncRpc() {
+      round_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MultiLimiterConfigSyncRpc(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              round_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncRpc_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncRpc_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.Builder.class);
+    }
+
+    public static final int ROUND_FIELD_NUMBER = 1;
+    private int round_;
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    public int getRound() {
+      return round_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (round_ != 0) {
+        output.writeInt32(1, round_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (round_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, round_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc)) {
+        return super.equals(obj);
+      }
+      in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc other = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc) obj;
+
+      boolean result = true;
+      result = result && (getRound()
+          == other.getRound());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROUND_FIELD_NUMBER;
+      hash = (53 * hash) + getRound();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MultiLimiterConfigSyncRpc}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MultiLimiterConfigSyncRpc)
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpcOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncRpc_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncRpc_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.Builder.class);
+      }
+
+      // Construct using in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        round_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncRpc_descriptor;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc getDefaultInstanceForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc build() {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc buildPartial() {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc result = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc(this);
+        result.round_ = round_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc) {
+          return mergeFrom((in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc other) {
+        if (other == in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc.getDefaultInstance()) return this;
+        if (other.getRound() != 0) {
+          setRound(other.getRound());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int round_ ;
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public int getRound() {
+        return round_;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder setRound(int value) {
+        
+        round_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder clearRound() {
+        
+        round_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MultiLimiterConfigSyncRpc)
+    }
+
+    // @@protoc_insertion_point(class_scope:MultiLimiterConfigSyncRpc)
+    private static final in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc();
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MultiLimiterConfigSyncRpc>
+        PARSER = new com.google.protobuf.AbstractParser<MultiLimiterConfigSyncRpc>() {
+      @java.lang.Override
+      public MultiLimiterConfigSyncRpc parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MultiLimiterConfigSyncRpc(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MultiLimiterConfigSyncRpc> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MultiLimiterConfigSyncRpc> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncRpc getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MultiLimiterConfigSyncResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MultiLimiterConfigSyncResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    int getRound();
+
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> 
+        getConfigsList();
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getConfigs(int index);
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    int getConfigsCount();
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder> 
+        getConfigsOrBuilderList();
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder getConfigsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code MultiLimiterConfigSyncResponse}
+   */
+  public  static final class MultiLimiterConfigSyncResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MultiLimiterConfigSyncResponse)
+      MultiLimiterConfigSyncResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MultiLimiterConfigSyncResponse.newBuilder() to construct.
+    private MultiLimiterConfigSyncResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MultiLimiterConfigSyncResponse() {
+      round_ = 0;
+      configs_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MultiLimiterConfigSyncResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              round_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                configs_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              configs_.add(
+                  input.readMessage(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          configs_ = java.util.Collections.unmodifiableList(configs_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.Builder.class);
+    }
+
+    public interface ConfigEntryOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:MultiLimiterConfigSyncResponse.ConfigEntry)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      boolean hasEndpoint();
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint();
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder();
+
+      /**
+       * <code>int32 capacity = 2;</code>
+       */
+      int getCapacity();
+
+      /**
+       * <code>int32 refill_amount = 3;</code>
+       */
+      int getRefillAmount();
+
+      /**
+       * <code>int64 refill_time = 4;</code>
+       */
+      long getRefillTime();
+    }
+    /**
+     * Protobuf type {@code MultiLimiterConfigSyncResponse.ConfigEntry}
+     */
+    public  static final class ConfigEntry extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:MultiLimiterConfigSyncResponse.ConfigEntry)
+        ConfigEntryOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use ConfigEntry.newBuilder() to construct.
+      private ConfigEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private ConfigEntry() {
+        capacity_ = 0;
+        refillAmount_ = 0;
+        refillTime_ = 0L;
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private ConfigEntry(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder subBuilder = null;
+                if (endpoint_ != null) {
+                  subBuilder = endpoint_.toBuilder();
+                }
+                endpoint_ = input.readMessage(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(endpoint_);
+                  endpoint_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
+              case 16: {
+
+                capacity_ = input.readInt32();
+                break;
+              }
+              case 24: {
+
+                refillAmount_ = input.readInt32();
+                break;
+              }
+              case 32: {
+
+                refillTime_ = input.readInt64();
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder.class);
+      }
+
+      public static final int ENDPOINT_FIELD_NUMBER = 1;
+      private in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint endpoint_;
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public boolean hasEndpoint() {
+        return endpoint_ != null;
+      }
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint() {
+        return endpoint_ == null ? in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+      }
+      /**
+       * <code>.MemberEndpoint endpoint = 1;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder() {
+        return getEndpoint();
+      }
+
+      public static final int CAPACITY_FIELD_NUMBER = 2;
+      private int capacity_;
+      /**
+       * <code>int32 capacity = 2;</code>
+       */
+      public int getCapacity() {
+        return capacity_;
+      }
+
+      public static final int REFILL_AMOUNT_FIELD_NUMBER = 3;
+      private int refillAmount_;
+      /**
+       * <code>int32 refill_amount = 3;</code>
+       */
+      public int getRefillAmount() {
+        return refillAmount_;
+      }
+
+      public static final int REFILL_TIME_FIELD_NUMBER = 4;
+      private long refillTime_;
+      /**
+       * <code>int64 refill_time = 4;</code>
+       */
+      public long getRefillTime() {
+        return refillTime_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (endpoint_ != null) {
+          output.writeMessage(1, getEndpoint());
+        }
+        if (capacity_ != 0) {
+          output.writeInt32(2, capacity_);
+        }
+        if (refillAmount_ != 0) {
+          output.writeInt32(3, refillAmount_);
+        }
+        if (refillTime_ != 0L) {
+          output.writeInt64(4, refillTime_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (endpoint_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, getEndpoint());
+        }
+        if (capacity_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(2, capacity_);
+        }
+        if (refillAmount_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, refillAmount_);
+        }
+        if (refillTime_ != 0L) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt64Size(4, refillTime_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry)) {
+          return super.equals(obj);
+        }
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry other = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry) obj;
+
+        boolean result = true;
+        result = result && (hasEndpoint() == other.hasEndpoint());
+        if (hasEndpoint()) {
+          result = result && getEndpoint()
+              .equals(other.getEndpoint());
+        }
+        result = result && (getCapacity()
+            == other.getCapacity());
+        result = result && (getRefillAmount()
+            == other.getRefillAmount());
+        result = result && (getRefillTime()
+            == other.getRefillTime());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasEndpoint()) {
+          hash = (37 * hash) + ENDPOINT_FIELD_NUMBER;
+          hash = (53 * hash) + getEndpoint().hashCode();
+        }
+        hash = (37 * hash) + CAPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + getCapacity();
+        hash = (37 * hash) + REFILL_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getRefillAmount();
+        hash = (37 * hash) + REFILL_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getRefillTime());
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code MultiLimiterConfigSyncResponse.ConfigEntry}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:MultiLimiterConfigSyncResponse.ConfigEntry)
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder.class);
+        }
+
+        // Construct using in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          if (endpointBuilder_ == null) {
+            endpoint_ = null;
+          } else {
+            endpoint_ = null;
+            endpointBuilder_ = null;
+          }
+          capacity_ = 0;
+
+          refillAmount_ = 0;
+
+          refillTime_ = 0L;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor;
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getDefaultInstanceForType() {
+          return in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry build() {
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry buildPartial() {
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry result = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry(this);
+          if (endpointBuilder_ == null) {
+            result.endpoint_ = endpoint_;
+          } else {
+            result.endpoint_ = endpointBuilder_.build();
+          }
+          result.capacity_ = capacity_;
+          result.refillAmount_ = refillAmount_;
+          result.refillTime_ = refillTime_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry) {
+            return mergeFrom((in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry other) {
+          if (other == in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.getDefaultInstance()) return this;
+          if (other.hasEndpoint()) {
+            mergeEndpoint(other.getEndpoint());
+          }
+          if (other.getCapacity() != 0) {
+            setCapacity(other.getCapacity());
+          }
+          if (other.getRefillAmount() != 0) {
+            setRefillAmount(other.getRefillAmount());
+          }
+          if (other.getRefillTime() != 0L) {
+            setRefillTime(other.getRefillTime());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint endpoint_ = null;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> endpointBuilder_;
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public boolean hasEndpoint() {
+          return endpointBuilder_ != null || endpoint_ != null;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint getEndpoint() {
+          if (endpointBuilder_ == null) {
+            return endpoint_ == null ? in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+          } else {
+            return endpointBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder setEndpoint(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+          if (endpointBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            endpoint_ = value;
+            onChanged();
+          } else {
+            endpointBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder setEndpoint(
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder builderForValue) {
+          if (endpointBuilder_ == null) {
+            endpoint_ = builderForValue.build();
+            onChanged();
+          } else {
+            endpointBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder mergeEndpoint(in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint value) {
+          if (endpointBuilder_ == null) {
+            if (endpoint_ != null) {
+              endpoint_ =
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.newBuilder(endpoint_).mergeFrom(value).buildPartial();
+            } else {
+              endpoint_ = value;
+            }
+            onChanged();
+          } else {
+            endpointBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public Builder clearEndpoint() {
+          if (endpointBuilder_ == null) {
+            endpoint_ = null;
+            onChanged();
+          } else {
+            endpoint_ = null;
+            endpointBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder getEndpointBuilder() {
+          
+          onChanged();
+          return getEndpointFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        public in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder getEndpointOrBuilder() {
+          if (endpointBuilder_ != null) {
+            return endpointBuilder_.getMessageOrBuilder();
+          } else {
+            return endpoint_ == null ?
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.getDefaultInstance() : endpoint_;
+          }
+        }
+        /**
+         * <code>.MemberEndpoint endpoint = 1;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder> 
+            getEndpointFieldBuilder() {
+          if (endpointBuilder_ == null) {
+            endpointBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpoint.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MemberEndpointOrBuilder>(
+                    getEndpoint(),
+                    getParentForChildren(),
+                    isClean());
+            endpoint_ = null;
+          }
+          return endpointBuilder_;
+        }
+
+        private int capacity_ ;
+        /**
+         * <code>int32 capacity = 2;</code>
+         */
+        public int getCapacity() {
+          return capacity_;
+        }
+        /**
+         * <code>int32 capacity = 2;</code>
+         */
+        public Builder setCapacity(int value) {
+          
+          capacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 capacity = 2;</code>
+         */
+        public Builder clearCapacity() {
+          
+          capacity_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int refillAmount_ ;
+        /**
+         * <code>int32 refill_amount = 3;</code>
+         */
+        public int getRefillAmount() {
+          return refillAmount_;
+        }
+        /**
+         * <code>int32 refill_amount = 3;</code>
+         */
+        public Builder setRefillAmount(int value) {
+          
+          refillAmount_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 refill_amount = 3;</code>
+         */
+        public Builder clearRefillAmount() {
+          
+          refillAmount_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private long refillTime_ ;
+        /**
+         * <code>int64 refill_time = 4;</code>
+         */
+        public long getRefillTime() {
+          return refillTime_;
+        }
+        /**
+         * <code>int64 refill_time = 4;</code>
+         */
+        public Builder setRefillTime(long value) {
+          
+          refillTime_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int64 refill_time = 4;</code>
+         */
+        public Builder clearRefillTime() {
+          
+          refillTime_ = 0L;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:MultiLimiterConfigSyncResponse.ConfigEntry)
+      }
+
+      // @@protoc_insertion_point(class_scope:MultiLimiterConfigSyncResponse.ConfigEntry)
+      private static final in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry();
+      }
+
+      public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<ConfigEntry>
+          PARSER = new com.google.protobuf.AbstractParser<ConfigEntry>() {
+        @java.lang.Override
+        public ConfigEntry parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ConfigEntry(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<ConfigEntry> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<ConfigEntry> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private int bitField0_;
+    public static final int ROUND_FIELD_NUMBER = 1;
+    private int round_;
+    /**
+     * <code>int32 round = 1;</code>
+     */
+    public int getRound() {
+      return round_;
+    }
+
+    public static final int CONFIGS_FIELD_NUMBER = 2;
+    private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> configs_;
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> getConfigsList() {
+      return configs_;
+    }
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder> 
+        getConfigsOrBuilderList() {
+      return configs_;
+    }
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    public int getConfigsCount() {
+      return configs_.size();
+    }
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getConfigs(int index) {
+      return configs_.get(index);
+    }
+    /**
+     * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+     */
+    public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder getConfigsOrBuilder(
+        int index) {
+      return configs_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (round_ != 0) {
+        output.writeInt32(1, round_);
+      }
+      for (int i = 0; i < configs_.size(); i++) {
+        output.writeMessage(2, configs_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (round_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, round_);
+      }
+      for (int i = 0; i < configs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, configs_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse)) {
+        return super.equals(obj);
+      }
+      in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse other = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse) obj;
+
+      boolean result = true;
+      result = result && (getRound()
+          == other.getRound());
+      result = result && getConfigsList()
+          .equals(other.getConfigsList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROUND_FIELD_NUMBER;
+      hash = (53 * hash) + getRound();
+      if (getConfigsCount() > 0) {
+        hash = (37 * hash) + CONFIGS_FIELD_NUMBER;
+        hash = (53 * hash) + getConfigsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MultiLimiterConfigSyncResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MultiLimiterConfigSyncResponse)
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.class, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.Builder.class);
+      }
+
+      // Construct using in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getConfigsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        round_ = 0;
+
+        if (configsBuilder_ == null) {
+          configs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          configsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.internal_static_MultiLimiterConfigSyncResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse getDefaultInstanceForType() {
+        return in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse build() {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse buildPartial() {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse result = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.round_ = round_;
+        if (configsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            configs_ = java.util.Collections.unmodifiableList(configs_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.configs_ = configs_;
+        } else {
+          result.configs_ = configsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse) {
+          return mergeFrom((in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse other) {
+        if (other == in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.getDefaultInstance()) return this;
+        if (other.getRound() != 0) {
+          setRound(other.getRound());
+        }
+        if (configsBuilder_ == null) {
+          if (!other.configs_.isEmpty()) {
+            if (configs_.isEmpty()) {
+              configs_ = other.configs_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureConfigsIsMutable();
+              configs_.addAll(other.configs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.configs_.isEmpty()) {
+            if (configsBuilder_.isEmpty()) {
+              configsBuilder_.dispose();
+              configsBuilder_ = null;
+              configs_ = other.configs_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              configsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getConfigsFieldBuilder() : null;
+            } else {
+              configsBuilder_.addAllMessages(other.configs_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int round_ ;
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public int getRound() {
+        return round_;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder setRound(int value) {
+        
+        round_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 round = 1;</code>
+       */
+      public Builder clearRound() {
+        
+        round_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> configs_ =
+        java.util.Collections.emptyList();
+      private void ensureConfigsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          configs_ = new java.util.ArrayList<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry>(configs_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder> configsBuilder_;
+
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> getConfigsList() {
+        if (configsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(configs_);
+        } else {
+          return configsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public int getConfigsCount() {
+        if (configsBuilder_ == null) {
+          return configs_.size();
+        } else {
+          return configsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry getConfigs(int index) {
+        if (configsBuilder_ == null) {
+          return configs_.get(index);
+        } else {
+          return configsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder setConfigs(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry value) {
+        if (configsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConfigsIsMutable();
+          configs_.set(index, value);
+          onChanged();
+        } else {
+          configsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder setConfigs(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder builderForValue) {
+        if (configsBuilder_ == null) {
+          ensureConfigsIsMutable();
+          configs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          configsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder addConfigs(in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry value) {
+        if (configsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConfigsIsMutable();
+          configs_.add(value);
+          onChanged();
+        } else {
+          configsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder addConfigs(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry value) {
+        if (configsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureConfigsIsMutable();
+          configs_.add(index, value);
+          onChanged();
+        } else {
+          configsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder addConfigs(
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder builderForValue) {
+        if (configsBuilder_ == null) {
+          ensureConfigsIsMutable();
+          configs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          configsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder addConfigs(
+          int index, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder builderForValue) {
+        if (configsBuilder_ == null) {
+          ensureConfigsIsMutable();
+          configs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          configsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder addAllConfigs(
+          java.lang.Iterable<? extends in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry> values) {
+        if (configsBuilder_ == null) {
+          ensureConfigsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, configs_);
+          onChanged();
+        } else {
+          configsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder clearConfigs() {
+        if (configsBuilder_ == null) {
+          configs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          configsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public Builder removeConfigs(int index) {
+        if (configsBuilder_ == null) {
+          ensureConfigsIsMutable();
+          configs_.remove(index);
+          onChanged();
+        } else {
+          configsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder getConfigsBuilder(
+          int index) {
+        return getConfigsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder getConfigsOrBuilder(
+          int index) {
+        if (configsBuilder_ == null) {
+          return configs_.get(index);  } else {
+          return configsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public java.util.List<? extends in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder> 
+           getConfigsOrBuilderList() {
+        if (configsBuilder_ != null) {
+          return configsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(configs_);
+        }
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder addConfigsBuilder() {
+        return getConfigsFieldBuilder().addBuilder(
+            in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder addConfigsBuilder(
+          int index) {
+        return getConfigsFieldBuilder().addBuilder(
+            index, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MultiLimiterConfigSyncResponse.ConfigEntry configs = 2;</code>
+       */
+      public java.util.List<in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder> 
+           getConfigsBuilderList() {
+        return getConfigsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder> 
+          getConfigsFieldBuilder() {
+        if (configsBuilder_ == null) {
+          configsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntry.Builder, in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse.ConfigEntryOrBuilder>(
+                  configs_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          configs_ = null;
+        }
+        return configsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MultiLimiterConfigSyncResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:MultiLimiterConfigSyncResponse)
+    private static final in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse();
+    }
+
+    public static in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MultiLimiterConfigSyncResponse>
+        PARSER = new com.google.protobuf.AbstractParser<MultiLimiterConfigSyncResponse>() {
+      @java.lang.Override
+      public MultiLimiterConfigSyncResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MultiLimiterConfigSyncResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MultiLimiterConfigSyncResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MultiLimiterConfigSyncResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public in.xnnyygn.xratelimiter.rpc.Protos.MultiLimiterConfigSyncResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MemberEndpoint_descriptor;
   private static final 
@@ -15485,6 +19494,31 @@ public final class Protos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProxyPingDoneResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_LimiterWeightsCollectingRpc_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_LimiterWeightsCollectingRpc_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MultiLimiterConfigSyncRpc_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MultiLimiterConfigSyncRpc_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MultiLimiterConfigSyncResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MultiLimiterConfigSyncResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -15543,8 +19577,21 @@ public final class Protos {
       "ngResponse\022\017\n\007ping_at\030\001 \001(\003\022(\n\017source_en" +
       "dpoint\030\002 \001(\0132\017.MemberEndpoint\"K\n\025ProxyPi" +
       "ngDoneResponse\022\017\n\007ping_at\030\001 \001(\003\022!\n\010endpo" +
-      "int\030\002 \001(\0132\017.MemberEndpointB%\n\033in.xnnyygn" +
-      ".xratelimiter.rpcB\006Protosb\006proto3"
+      "int\030\002 \001(\0132\017.MemberEndpoint\"\346\001\n\033LimiterWe" +
+      "ightsCollectingRpc\022\r\n\005round\030\001 \001(\005\022C\n\014ide" +
+      "alWeights\030\002 \003(\0132-.LimiterWeightsCollecti" +
+      "ngRpc.IdealWeightEntry\022,\n\023remaining_endp" +
+      "oints\030\003 \003(\0132\017.MemberEndpoint\032E\n\020IdealWei" +
+      "ghtEntry\022!\n\010endpoint\030\001 \001(\0132\017.MemberEndpo" +
+      "int\022\016\n\006weight\030\002 \001(\001\"*\n\031MultiLimiterConfi" +
+      "gSyncRpc\022\r\n\005round\030\001 \001(\005\"\335\001\n\036MultiLimiter" +
+      "ConfigSyncResponse\022\r\n\005round\030\001 \001(\005\022<\n\007con" +
+      "figs\030\002 \003(\0132+.MultiLimiterConfigSyncRespo" +
+      "nse.ConfigEntry\032n\n\013ConfigEntry\022!\n\010endpoi" +
+      "nt\030\001 \001(\0132\017.MemberEndpoint\022\020\n\010capacity\030\002 " +
+      "\001(\005\022\025\n\rrefill_amount\030\003 \001(\005\022\023\n\013refill_tim" +
+      "e\030\004 \001(\003B%\n\033in.xnnyygn.xratelimiter.rpcB\006" +
+      "Protosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -15690,6 +19737,36 @@ public final class Protos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProxyPingDoneResponse_descriptor,
         new java.lang.String[] { "PingAt", "Endpoint", });
+    internal_static_LimiterWeightsCollectingRpc_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_LimiterWeightsCollectingRpc_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_LimiterWeightsCollectingRpc_descriptor,
+        new java.lang.String[] { "Round", "IdealWeights", "RemainingEndpoints", });
+    internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor =
+      internal_static_LimiterWeightsCollectingRpc_descriptor.getNestedTypes().get(0);
+    internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_LimiterWeightsCollectingRpc_IdealWeightEntry_descriptor,
+        new java.lang.String[] { "Endpoint", "Weight", });
+    internal_static_MultiLimiterConfigSyncRpc_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_MultiLimiterConfigSyncRpc_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MultiLimiterConfigSyncRpc_descriptor,
+        new java.lang.String[] { "Round", });
+    internal_static_MultiLimiterConfigSyncResponse_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_MultiLimiterConfigSyncResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MultiLimiterConfigSyncResponse_descriptor,
+        new java.lang.String[] { "Round", "Configs", });
+    internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor =
+      internal_static_MultiLimiterConfigSyncResponse_descriptor.getNestedTypes().get(0);
+    internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MultiLimiterConfigSyncResponse_ConfigEntry_descriptor,
+        new java.lang.String[] { "Endpoint", "Capacity", "RefillAmount", "RefillTime", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -28,4 +28,12 @@ public class MultiLimiterConfigSyncResponse extends AbstractMessage {
         return configMap;
     }
 
+    @Override
+    public String toString() {
+        return "MultiLimiterConfigSyncResponse{" +
+                "round=" + round +
+                ", configMap=" + configMap +
+                '}';
+    }
+
 }

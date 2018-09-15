@@ -8,6 +8,7 @@ import in.xnnyygn.xratelimiter.support.MessageDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.*;
 import java.util.concurrent.ScheduledFuture;
@@ -16,8 +17,8 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
 
     private static final Logger logger = LoggerFactory.getLogger(StaticMemberDistributedTokenBucketRateLimiter.class);
 
-    private static final long REFRESH_TIMEOUT = 3000;
-    private static final long SYNC_INTERVAL = 1000;
+    private static final long REFRESH_TIMEOUT = 10000;
+    private static final long SYNC_INTERVAL = 3000;
 
     private final MessageDispatcher messageDispatcher;
     private final MemberEndpoint selfEndpoint;
@@ -108,6 +109,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     }
 
     private void updateMultiLimiterConfig(MultiLimiterConfig newConfig) {
+        logger.info("update multi limiter config -> {}", newConfig);
         multiLimiterConfig = newConfig;
         limiter.reset(newConfig.getConfig(selfEndpoint));
     }
@@ -207,6 +209,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         }
 
         void shutdown() {
+            refreshTimeout.cancel();
             delegate.shutdown();
         }
 
@@ -246,6 +249,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     @ThreadSafe
     private static class TokenBucketRateLimiterWrapper {
 
+        @GuardedBy("this")
         private DefaultTokenBucketRateLimiter delegate;
 
         TokenBucketRateLimiterWrapper(TokenBucketRateLimiterConfig config) {
@@ -282,7 +286,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         }
 
         void add(int n) {
-            if (sampling || random.nextDouble() > ratio) {
+            if ((random.nextDouble() > ratio) || sampling) {
                 return;
             }
             synchronized (this) {
@@ -291,8 +295,8 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         }
 
         double averageRate() {
-            sampling = true;
             RequestSequence.Range range;
+            sampling = true;
             synchronized (this) {
                 range = sequence.average();
             }
@@ -304,8 +308,8 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         }
 
         double maxRate(long window) {
-            sampling = true;
             RequestSequence.Range range;
+            sampling = true;
             synchronized (this) {
                 range = sequence.max(window);
             }
