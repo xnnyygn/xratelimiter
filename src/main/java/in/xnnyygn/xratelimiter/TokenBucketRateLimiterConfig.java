@@ -50,9 +50,9 @@ public class TokenBucketRateLimiterConfig {
     public String toString() {
         return "TokenBucketRateLimiterConfig{" +
                 "capacity=" + capacity +
-                ", initialTokens=" + initialTokens +
                 ", refillAmount=" + refillAmount +
                 ", refillTime=" + refillTime +
+                ", initialTokens=" + initialTokens +
                 '}';
     }
 

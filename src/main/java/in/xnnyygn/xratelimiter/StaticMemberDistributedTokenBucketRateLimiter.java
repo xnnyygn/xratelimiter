@@ -248,21 +248,21 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     private static class TokenBucketRateLimiterWrapper {
 
         @GuardedBy("this")
-        private DefaultTokenBucketRateLimiter delegate;
+        private volatile ConcurrentTokenBucketRateLimiter delegate;
 
         TokenBucketRateLimiterWrapper(TokenBucketRateLimiterConfig config) {
             logger.info("create limiter with config {}", config);
-            this.delegate = new DefaultTokenBucketRateLimiter(config);
+            this.delegate = new ConcurrentTokenBucketRateLimiter(config);
         }
 
-        synchronized boolean take(int n) {
+        boolean take(int n) {
             return delegate.take(n);
         }
 
-        synchronized void reset(TokenBucketRateLimiterConfig config) {
+        void reset(TokenBucketRateLimiterConfig config) {
             logger.info("reset limiter with config {}", config);
             int initialTokens = delegate.getTokens();
-            delegate = new DefaultTokenBucketRateLimiter(
+            delegate = new ConcurrentTokenBucketRateLimiter(
                     config.getCapacity(),
                     config.getRefillAmount(),
                     config.getRefillTime(),
