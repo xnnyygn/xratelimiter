@@ -30,4 +30,13 @@ public class LimiterWeightsCollectingRpc extends AbstractMessage {
         return remainingEndpoints;
     }
 
+    @Override
+    public String toString() {
+        return "LimiterWeightsCollectingRpc{" +
+                "round=" + round +
+                ", idealWeightMap=" + idealWeightMap +
+                ", remainingEndpoints=" + remainingEndpoints +
+                '}';
+    }
+
 }

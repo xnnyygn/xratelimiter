@@ -30,6 +30,9 @@ public class MultiLimiterConfig {
 
     public static MultiLimiterConfig fromIdealWeights(int round, Map<MemberEndpoint, Double> idealWeightMap, TokenBucketRateLimiterConfig globalConfig) {
         double totalWeight = evaluateTotalWeight(idealWeightMap.values());
+        if (totalWeight < 0.001) {
+            totalWeight = 1;
+        }
         Map<MemberEndpoint, TokenBucketRateLimiterConfig> quotaMap = new HashMap<>();
         double rate;
         for (MemberEndpoint endpoint : idealWeightMap.keySet()) {
@@ -49,7 +52,7 @@ public class MultiLimiterConfig {
         for (Double idealWeight : weights) {
             totalWeight += idealWeight;
         }
-        return totalWeight > 0.001 ? totalWeight : 1;
+        return totalWeight;
     }
 
     public int getRound() {
@@ -61,7 +64,11 @@ public class MultiLimiterConfig {
     }
 
     public TokenBucketRateLimiterConfig getConfig(MemberEndpoint endpoint) {
-        return configMap.get(endpoint);
+        TokenBucketRateLimiterConfig config = configMap.get(endpoint);
+        if (config == null) {
+            throw new IllegalStateException("no config for " + endpoint);
+        }
+        return config;
     }
 
     @Override

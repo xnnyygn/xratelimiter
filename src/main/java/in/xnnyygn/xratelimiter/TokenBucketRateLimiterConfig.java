@@ -8,6 +8,9 @@ public class TokenBucketRateLimiterConfig {
     private final int initialTokens;
 
     public TokenBucketRateLimiterConfig(int capacity, int refillAmount, long refillTime, int initialTokens) {
+        if (refillTime <= 0) {
+            throw new IllegalArgumentException("refill time <= 0");
+        }
         this.capacity = capacity;
         this.refillAmount = refillAmount;
         this.refillTime = refillTime;
@@ -24,6 +27,10 @@ public class TokenBucketRateLimiterConfig {
 
     public long getRefillTime() {
         return refillTime;
+    }
+
+    public double getRefillRate() {
+        return (double) refillAmount / refillTime;
     }
 
     public int getInitialTokens() {

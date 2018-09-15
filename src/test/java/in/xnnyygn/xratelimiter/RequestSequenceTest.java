@@ -56,12 +56,12 @@ public class RequestSequenceTest {
     }
 
     @Test
-    public void testAverageRate() {
+    public void testAverage() {
         RequestSequence sequence = new RequestSequence(4, 10);
-        assertEquals(0.0, sequence.averageRate(), 0.001);
+        assertEquals(0, sequence.average().getSum());
 
         sequence.add(1, 1);
-        assertEquals(0.0, sequence.averageRate(), 0.001);
+        assertEquals(1, sequence.average().getSum());
 
         sequence.add(2, 1);
         sequence.add(3, 1);
@@ -72,7 +72,7 @@ public class RequestSequenceTest {
         sequence.add(6, 1);
 
         // (1 + 1 + 2 + 1) / (6 - 4) => 2.5
-        assertEquals(2.5, sequence.averageRate(), 0.001);
+        assertEquals(5, sequence.average().getSum());
     }
 
     @Test

@@ -14,4 +14,11 @@ public class MultiLimiterConfigSyncRpc extends AbstractMessage {
         return round;
     }
 
+    @Override
+    public String toString() {
+        return "MultiLimiterConfigSyncRpc{" +
+                "round=" + round +
+                '}';
+    }
+
 }

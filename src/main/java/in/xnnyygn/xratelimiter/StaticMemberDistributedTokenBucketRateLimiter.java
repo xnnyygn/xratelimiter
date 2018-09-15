@@ -1,16 +1,14 @@
 package in.xnnyygn.xratelimiter;
 
 import in.xnnyygn.xratelimiter.gossip.MemberEndpoint;
-import in.xnnyygn.xratelimiter.rpc.DefaultTransporter;
 import in.xnnyygn.xratelimiter.rpc.Transporter;
 import in.xnnyygn.xratelimiter.rpc.messages.RemoteMessage;
-import in.xnnyygn.xratelimiter.schedule.DefaultScheduler;
 import in.xnnyygn.xratelimiter.schedule.Scheduler;
 import in.xnnyygn.xratelimiter.support.MessageDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.concurrent.GuardedBy;
+import javax.annotation.concurrent.ThreadSafe;
 import java.util.*;
 import java.util.concurrent.ScheduledFuture;
 
@@ -21,46 +19,31 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     private static final long REFRESH_TIMEOUT = 3000;
     private static final long SYNC_INTERVAL = 1000;
 
+    private final MessageDispatcher messageDispatcher;
     private final MemberEndpoint selfEndpoint;
     private final MemberEndpointList endpointList;
     private final TokenBucketRateLimiterConfig globalConfig;
 
-    private final MessageDispatcher messageDispatcher = new MessageDispatcher();
     private final Transporter transporter;
-    private final Scheduler scheduler;
+    private final SchedulerWrapper scheduler;
 
-    private volatile RefreshTimeout refreshTimeout;
+    private final RequestSampler requestSampler;
+    private final TokenBucketRateLimiterWrapper limiter;
     private volatile MultiLimiterConfig multiLimiterConfig;
 
-    private final Object limiterLock = new Object();
-    @GuardedBy("limiterLock")
-    private volatile DefaultTokenBucketRateLimiter delegate;
+    public StaticMemberDistributedTokenBucketRateLimiter(DistributedTokenBucketRateLimiterArguments arguments) {
+        this.selfEndpoint = arguments.getSelfEndpoint();
+        this.endpointList = new MemberEndpointList(arguments.getEndpoints());
+        this.globalConfig = arguments.getGlobalConfig();
 
-    /**
-     * Create limiter.
-     *
-     * @param selfEndpoint self endpoint
-     * @param endpoints    endpoints
-     * @param globalConfig global config
-     */
-    public StaticMemberDistributedTokenBucketRateLimiter(MemberEndpoint selfEndpoint, Set<MemberEndpoint> endpoints,
-                                                         TokenBucketRateLimiterConfig globalConfig) {
-        if (!endpoints.contains(selfEndpoint)) {
-            throw new IllegalArgumentException("self is not in endpoints");
-        }
-        int nEndpoint = endpoints.size();
-        if (nEndpoint > globalConfig.getCapacity()) {
-            throw new IllegalArgumentException("member count > total capacity");
-        }
-        this.selfEndpoint = selfEndpoint;
-        this.endpointList = new MemberEndpointList(endpoints);
-        this.globalConfig = globalConfig;
+        this.multiLimiterConfig = MultiLimiterConfig.fromEndpoints(1, arguments.getEndpoints(), globalConfig);
+        this.limiter = new TokenBucketRateLimiterWrapper(multiLimiterConfig.getConfig(selfEndpoint));
 
-        this.multiLimiterConfig = MultiLimiterConfig.fromEndpoints(1, endpoints, globalConfig);
-        this.delegate = new DefaultTokenBucketRateLimiter(multiLimiterConfig.getConfig(selfEndpoint));
+        this.messageDispatcher = arguments.getMessageDispatcher();
+        this.transporter = arguments.getTransporter();
+        this.scheduler = new SchedulerWrapper(arguments.getScheduler());
 
-        this.transporter = new DefaultTransporter(selfEndpoint, messageDispatcher);
-        this.scheduler = new DefaultScheduler();
+        this.requestSampler = new RequestSampler(1024, 3000, 0.5);
     }
 
     public void initialize() {
@@ -70,47 +53,27 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         messageDispatcher.register(MultiLimiterConfigSyncRpc.class, this::onReceiveMultiLimiterConfigSyncRpc);
         messageDispatcher.register(MultiLimiterConfigSyncResponse.class, this::onReceiveMultiLimiterConfigSyncResponse);
 
-        scheduler.scheduleWithFixedDelay(this::syncMultiLimiterConfig, SYNC_INTERVAL, SYNC_INTERVAL);
-        scheduleRefreshTimeout();
-    }
-
-    private synchronized void scheduleRefreshTimeout(long expectedTimestamp) {
-        if (refreshTimeout.getTimestamp() != expectedTimestamp) {
-            return;
-        }
-        scheduleRefreshTimeout();
-    }
-
-    private void scheduleRefreshTimeout() {
-        long timestamp = System.currentTimeMillis();
-        ScheduledFuture<?> future = scheduler.schedule(() -> onRefreshTimeout(timestamp), REFRESH_TIMEOUT);
-        refreshTimeout = new RefreshTimeout(future, timestamp);
-    }
-
-    private void resetRefreshTimeout() {
-        RefreshTimeout refreshTimeout = this.refreshTimeout;
-        refreshTimeout.cancel();
-        scheduleRefreshTimeout(refreshTimeout.getTimestamp());
+        scheduler.scheduleSyncTask(this::syncMultiLimiterConfig);
+        scheduler.scheduleRefreshTimeout(this::onRefreshTimeout);
     }
 
     @Override
     public boolean take(int n) {
-        synchronized (limiterLock) {
-            return delegate.take(n);
-        }
+        requestSampler.add(n);
+        return limiter.take(n);
     }
 
-    void onRefreshTimeout(long timestamp) {
-        if (endpointList.isNoOtherMember()) { // no other member
+    void onRefreshTimeout() {
+        if (endpointList.isNoOtherMember()) {
             return;
         }
+        logger.info("start refresh");
         Set<MemberEndpoint> remainingEndpoints = endpointList.getOtherMemberEndpoints(selfEndpoint);
         transporter.send(nextEndpoint(remainingEndpoints), new LimiterWeightsCollectingRpc(
                 multiLimiterConfig.getRound() + 1,
                 Collections.singletonMap(selfEndpoint, calculateIdealWeight()),
                 remainingEndpoints
         ));
-        scheduleRefreshTimeout(timestamp);
     }
 
     private MemberEndpoint nextEndpoint(Set<MemberEndpoint> endpoints) {
@@ -119,7 +82,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     }
 
     private double calculateIdealWeight() {
-        throw new UnsupportedOperationException();
+        return requestSampler.averageRate();
     }
 
     void onReceiveLimiterWeightsCollectingRpc(RemoteMessage<LimiterWeightsCollectingRpc> message) {
@@ -130,7 +93,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
             logger.warn("unexpected round or not the remaining endpoint");
             return;
         }
-        resetRefreshTimeout();
+        scheduler.resetRefreshTimeout();
         Map<MemberEndpoint, Double> idealWeightMap = rpc.getIdealWeightMap();
         idealWeightMap.put(selfEndpoint, calculateIdealWeight());
         if (remainingEndpoints.size() == 1) {
@@ -146,13 +109,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
 
     private void updateMultiLimiterConfig(MultiLimiterConfig newConfig) {
         multiLimiterConfig = newConfig;
-        TokenBucketRateLimiterConfig config = newConfig.getConfig(selfEndpoint);
-        synchronized (limiterLock) {
-            int initialTokens = delegate.getTokens();
-            delegate = new DefaultTokenBucketRateLimiter(
-                    config.getCapacity(), config.getRefillAmount(), config.getRefillTime(), initialTokens
-            );
-        }
+        limiter.reset(newConfig.getConfig(selfEndpoint));
     }
 
     void syncMultiLimiterConfig() {
@@ -190,20 +147,67 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
 
     private static class RefreshTimeout {
 
+        private final Runnable command;
         private final ScheduledFuture<?> future;
         private final long timestamp;
 
-        public RefreshTimeout(ScheduledFuture<?> future, long timestamp) {
+        RefreshTimeout(Runnable command, ScheduledFuture<?> future, long timestamp) {
+            this.command = command;
             this.future = future;
             this.timestamp = timestamp;
         }
 
-        public boolean cancel() {
+        Runnable getCommand() {
+            return command;
+        }
+
+        boolean cancel() {
             return future.cancel(false);
         }
 
-        public long getTimestamp() {
+        long getTimestamp() {
             return timestamp;
+        }
+
+    }
+
+    private static class SchedulerWrapper {
+
+        private final Scheduler delegate;
+        private volatile RefreshTimeout refreshTimeout;
+
+        SchedulerWrapper(Scheduler delegate) {
+            this.delegate = delegate;
+        }
+
+        private synchronized void scheduleRefreshTimeout(Runnable command, long expectedTimestamp) {
+            if (refreshTimeout.getTimestamp() != expectedTimestamp) {
+                return;
+            }
+            scheduleRefreshTimeout(command);
+        }
+
+        void scheduleRefreshTimeout(Runnable command) {
+            long timestamp = System.currentTimeMillis();
+            ScheduledFuture<?> future = delegate.schedule(() -> {
+                command.run();
+                scheduleRefreshTimeout(command, timestamp);
+            }, REFRESH_TIMEOUT);
+            refreshTimeout = new RefreshTimeout(command, future, timestamp);
+        }
+
+        void resetRefreshTimeout() {
+            RefreshTimeout refreshTimeout = this.refreshTimeout;
+            refreshTimeout.cancel();
+            scheduleRefreshTimeout(refreshTimeout.getCommand(), refreshTimeout.getTimestamp());
+        }
+
+        void scheduleSyncTask(Runnable command) {
+            delegate.scheduleWithFixedDelay(command, SYNC_INTERVAL, SYNC_INTERVAL);
+        }
+
+        void shutdown() {
+            delegate.shutdown();
         }
 
     }
@@ -235,6 +239,81 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
                 endpoint = (MemberEndpoint) endpointArray[random.nextInt(n)];
             } while (selfEndpoint.equals(endpoint));
             return endpoint;
+        }
+
+    }
+
+    @ThreadSafe
+    private static class TokenBucketRateLimiterWrapper {
+
+        private DefaultTokenBucketRateLimiter delegate;
+
+        TokenBucketRateLimiterWrapper(TokenBucketRateLimiterConfig config) {
+            this.delegate = new DefaultTokenBucketRateLimiter(config);
+        }
+
+        synchronized boolean take(int n) {
+            return delegate.take(n);
+        }
+
+        synchronized void reset(TokenBucketRateLimiterConfig config) {
+            int initialTokens = delegate.getTokens();
+            delegate = new DefaultTokenBucketRateLimiter(
+                    config.getCapacity(),
+                    config.getRefillAmount(),
+                    config.getRefillTime(),
+                    initialTokens
+            );
+        }
+
+    }
+
+    @ThreadSafe
+    private static class RequestSampler {
+
+        private final Random random = new Random();
+        private final double ratio;
+        private final RequestSequence sequence;
+        private volatile boolean sampling = false;
+
+        RequestSampler(int capacity, long duration, double ratio) {
+            this.ratio = ratio;
+            this.sequence = new RequestSequence(capacity, duration);
+        }
+
+        void add(int n) {
+            if (sampling || random.nextDouble() > ratio) {
+                return;
+            }
+            synchronized (this) {
+                sequence.add(n);
+            }
+        }
+
+        double averageRate() {
+            sampling = true;
+            RequestSequence.Range range;
+            synchronized (this) {
+                range = sequence.average();
+            }
+            sampling = false;
+            if (!range.isValid()) {
+                return 0;
+            }
+            return (double) range.getSum() / (range.getEndTime() - range.getStartTime());
+        }
+
+        double maxRate(long window) {
+            sampling = true;
+            RequestSequence.Range range;
+            synchronized (this) {
+                range = sequence.max(window);
+            }
+            sampling = false;
+            if (!range.isValid()) {
+                return 0;
+            }
+            return (double) range.getSum() / (range.getEndTime() - range.getStartTime());
         }
 
     }

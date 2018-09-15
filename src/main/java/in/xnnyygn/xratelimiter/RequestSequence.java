@@ -3,22 +3,22 @@ package in.xnnyygn.xratelimiter;
 public class RequestSequence {
 
     private final Request[] requests;
-    private final int limit;
-    private final int limit1;
+    private final int capacity;
+    private final int capacity1;
     private final long duration;
     private int first = 0;
     private int last = -1;
 
-    public RequestSequence(int limit, long duration) {
-        if (limit <= 0 || (limit & (limit - 1)) != 0) {
-            throw new IllegalArgumentException("limit <= 0 or not power of 2");
+    public RequestSequence(int capacity, long duration) {
+        if (capacity <= 0 || (capacity & (capacity - 1)) != 0) {
+            throw new IllegalArgumentException("capacity <= 0 or not power of 2");
         }
         if (duration < 0) {
             throw new IllegalArgumentException("duration < 0");
         }
-        this.requests = new Request[limit];
-        this.limit = limit;
-        this.limit1 = limit - 1;
+        this.requests = new Request[capacity];
+        this.capacity = capacity;
+        this.capacity1 = capacity - 1;
         this.duration = duration;
     }
 
@@ -29,15 +29,15 @@ public class RequestSequence {
     void add(long timestamp, int n) {
         // assert timestamp > timestamp of last request
         last++;
-        if (last - first == limit) {
+        if (last - first == capacity) {
             first++;
         }
-        requests[last & limit1] = new Request(timestamp, n);
+        requests[last & capacity1] = new Request(timestamp, n);
         first = findFirstBefore(first, last, timestamp - duration + 1) + 1;
     }
 
     private Request request(int position) {
-        return requests[position & limit1];
+        return requests[position & capacity1];
     }
 
     private int findFirstBefore(int from, int to, long timestamp) {
@@ -73,16 +73,16 @@ public class RequestSequence {
         return sum;
     }
 
-    public double averageRate() {
-        if (first >= last) {
-            return 0;
+    public Range average() {
+        if (first > last) {
+            return RANGE_ZERO;
         }
-        return (double) doSum() / (request(last).timestamp - request(first).timestamp);
+        return new Range(request(first).timestamp, request(last).timestamp, doSum());
     }
 
     public Range max(long window) {
         if (first > last || window <= 0) {
-            return new Range(0, 0, 0);
+            return RANGE_ZERO;
         }
         Request firstRequest = request(first);
         long max = firstRequest.n;
@@ -134,7 +134,13 @@ public class RequestSequence {
             return sum;
         }
 
+        public boolean isValid() {
+            return startTime < endTime;
+        }
+
     }
+
+    private static final Range RANGE_ZERO = new Range(0, 0, 0);
 
     private static class Request {
 
