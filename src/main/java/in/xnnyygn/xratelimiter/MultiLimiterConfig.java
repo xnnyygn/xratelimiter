@@ -30,17 +30,19 @@ public class MultiLimiterConfig {
 
     public static MultiLimiterConfig fromIdealWeights(int round, Map<MemberEndpoint, Double> idealWeightMap, TokenBucketRateLimiterConfig globalConfig) {
         double totalWeight = evaluateTotalWeight(idealWeightMap.values());
-        if (totalWeight < 0.001) {
+        if (totalWeight == 0.0) {
             totalWeight = 1;
         }
         Map<MemberEndpoint, TokenBucketRateLimiterConfig> quotaMap = new HashMap<>();
         double rate;
+        int capacity;
         for (MemberEndpoint endpoint : idealWeightMap.keySet()) {
             rate = idealWeightMap.get(endpoint) / totalWeight;
+            capacity = (int) (globalConfig.getCapacity() * rate);
             quotaMap.put(endpoint, new TokenBucketRateLimiterConfig(
-                    (int) (globalConfig.getCapacity() * rate),
-                    (int) (globalConfig.getRefillAmount() * rate),
-                    globalConfig.getRefillTime(),
+                    capacity,
+                    globalConfig.getRefillAmount(),
+                    capacity != 0 ? (long) (globalConfig.getRefillTime() / rate) : globalConfig.getRefillTime(),
                     0
             ));
         }

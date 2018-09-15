@@ -17,8 +17,8 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
 
     private static final Logger logger = LoggerFactory.getLogger(StaticMemberDistributedTokenBucketRateLimiter.class);
 
-    private static final long REFRESH_TIMEOUT = 10000;
-    private static final long SYNC_INTERVAL = 3000;
+    private static final long REFRESH_TIMEOUT = 5000;
+    private static final long SYNC_INTERVAL = 2000;
 
     private final MessageDispatcher messageDispatcher;
     private final MemberEndpoint selfEndpoint;
@@ -44,7 +44,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         this.transporter = arguments.getTransporter();
         this.scheduler = new SchedulerWrapper(arguments.getScheduler());
 
-        this.requestSampler = new RequestSampler(1024, 3000, 0.5);
+        this.requestSampler = new RequestSampler(1024, 30000, 0.5);
     }
 
     public void initialize() {
@@ -68,7 +68,6 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         if (endpointList.isNoOtherMember()) {
             return;
         }
-        logger.info("start refresh");
         Set<MemberEndpoint> remainingEndpoints = endpointList.getOtherMemberEndpoints(selfEndpoint);
         transporter.send(nextEndpoint(remainingEndpoints), new LimiterWeightsCollectingRpc(
                 multiLimiterConfig.getRound() + 1,
@@ -109,7 +108,6 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
     }
 
     private void updateMultiLimiterConfig(MultiLimiterConfig newConfig) {
-        logger.info("update multi limiter config -> {}", newConfig);
         multiLimiterConfig = newConfig;
         limiter.reset(newConfig.getConfig(selfEndpoint));
     }
@@ -253,6 +251,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         private DefaultTokenBucketRateLimiter delegate;
 
         TokenBucketRateLimiterWrapper(TokenBucketRateLimiterConfig config) {
+            logger.info("create limiter with config {}", config);
             this.delegate = new DefaultTokenBucketRateLimiter(config);
         }
 
@@ -261,6 +260,7 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
         }
 
         synchronized void reset(TokenBucketRateLimiterConfig config) {
+            logger.info("reset limiter with config {}", config);
             int initialTokens = delegate.getTokens();
             delegate = new DefaultTokenBucketRateLimiter(
                     config.getCapacity(),
@@ -304,7 +304,8 @@ public class StaticMemberDistributedTokenBucketRateLimiter implements TokenBucke
             if (!range.isValid()) {
                 return 0;
             }
-            return (double) range.getSum() / (range.getEndTime() - range.getStartTime());
+            logger.debug("average range {}", range);
+            return range.getSum();
         }
 
         double maxRate(long window) {

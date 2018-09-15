@@ -21,14 +21,17 @@ public class StaticMemberDistributedTokenBucketRateLimiterLauncher {
                         new MemberEndpoint("localhost", 5303),
                         new MemberEndpoint("localhost", 5304)
                 ),
-                new TokenBucketRateLimiterConfig(6, 1, 1000, 0)
+                new TokenBucketRateLimiterConfig(60, 60, 1000, 0)
         );
         limiterArguments.setTransporter(new DefaultTransporter(endpoint, limiterArguments.getMessageDispatcher()));
         limiterArguments.setScheduler(new DefaultScheduler());
 
         StaticMemberDistributedTokenBucketRateLimiter limiter = new StaticMemberDistributedTokenBucketRateLimiter(limiterArguments);
         limiter.initialize();
+        SimpleService service = new SimpleService(limiter, endpoint.getPort() + 1000);
+        service.start();
         System.in.read();
+        service.stop();
         limiter.shutdown();
     }
 

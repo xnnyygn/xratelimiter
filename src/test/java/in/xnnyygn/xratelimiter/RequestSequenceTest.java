@@ -61,7 +61,7 @@ public class RequestSequenceTest {
         assertEquals(0, sequence.average().getSum());
 
         sequence.add(1, 1);
-        assertEquals(1, sequence.average().getSum());
+        assertEquals(1, sequence.average(0).getSum());
 
         sequence.add(2, 1);
         sequence.add(3, 1);
@@ -72,7 +72,7 @@ public class RequestSequenceTest {
         sequence.add(6, 1);
 
         // (1 + 1 + 2 + 1) / (6 - 4) => 2.5
-        assertEquals(5, sequence.average().getSum());
+        assertEquals(5, sequence.average(0).getSum());
     }
 
     @Test

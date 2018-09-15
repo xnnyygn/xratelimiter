@@ -62,23 +62,32 @@ public class RequestSequence {
         if (first == last) {
             return request(first).n;
         }
-        return doSum();
+        return doSum(first, last);
     }
 
-    private long doSum() {
+    private long doSum(int from, int to) {
         long sum = 0;
-        for (int i = first; i <= last; i++) {
+        for (int i = from; i <= to; i++) {
             sum += request(i).n;
         }
         return sum;
     }
 
     public Range average() {
+        return average(System.currentTimeMillis() - duration + 1);
+    }
+
+    public Range average(long startTime) {
         if (first > last) {
             return RANGE_ZERO;
         }
-        return new Range(request(first).timestamp, request(last).timestamp, doSum());
+        int from = findFirstBefore(first, last, startTime) + 1;
+        if (from > last) {
+            return RANGE_ZERO;
+        }
+        return new Range(request(from).timestamp, request(last).timestamp, doSum(from, last));
     }
+
 
     public Range max(long window) {
         if (first > last || window <= 0) {
@@ -136,6 +145,15 @@ public class RequestSequence {
 
         public boolean isValid() {
             return startTime < endTime;
+        }
+
+        @Override
+        public String toString() {
+            return "Range{" +
+                    "startTime=" + startTime +
+                    ", endTime=" + endTime +
+                    ", sum=" + sum +
+                    '}';
         }
 
     }

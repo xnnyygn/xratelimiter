@@ -32,8 +32,11 @@ public class DefaultTokenBucketRateLimiter implements TokenBucketRateLimiter {
 
     private int refill() {
         long now = System.currentTimeMillis();
-        tokens = Math.min(tokens + (int) ((now - refilledAt) * refillAmount / refillTime), capacity);
-        refilledAt = now;
+        int delta = (int) ((now - refilledAt) * refillAmount / refillTime);
+        if (delta > 0) {
+            tokens = Math.min(tokens + delta, capacity);
+            refilledAt = now;
+        }
         return tokens;
     }
 
