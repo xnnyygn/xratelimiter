@@ -59,7 +59,7 @@ When you change the rate of clients, you can see the change of limiters.
 
 ## Build
 
-xratelimiter uses [maven|https://maven.apache.org/] as the build system.
+xratelimiter uses [maven](https://maven.apache.org/) as the build system.
 
 ```
 $ mvn clean compile install
