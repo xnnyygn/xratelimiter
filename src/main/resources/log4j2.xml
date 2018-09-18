@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="in.xnnyygn.xratelimiter" level="debug"/>
+        <Logger name="in.xnnyygn.xratelimiter" level="info"/>
         <Root level="info">
             <AppenderRef ref="STDOUT"/>
         </Root>
